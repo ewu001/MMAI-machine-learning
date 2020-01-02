@@ -37,7 +37,7 @@ def train_tuning(model, data_X, data_y, hparam={}, cvmetric=""):
     print("X_train size: ", X_train.shape)
     if hparam != {}:
         model = GridSearchCV(model, hparam, cv=5, return_train_score=True, scoring=cvmetric)
-        print("best parameter: ", model.best_params_)
+        
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     print('Accuracy : ', accuracy_score(y_test, y_pred))
