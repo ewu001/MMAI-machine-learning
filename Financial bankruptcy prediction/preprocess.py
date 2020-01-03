@@ -50,8 +50,13 @@ def feature_preprocessor(train_data_object, features_dropna, features_impute, fe
     standardizer = StandardScaler()
     train_data_object.standardize(standardizer, columns=feature_list)
         
+    print("after processing: ", train_data_object.getValue().shape)
     return train_data_object.getValue()
 
 
+def clean_column_name(df):
+    processed_df = df.rename(columns={"Tobin's Q": 'Tobin_Q', "Asset Turnover": 'Asset_Turnover', "Assets Growth": 'Assets_Growth',
+    "Data Year - Fiscal": 'Fiscal_year', "Employee Growth": 'Employee_Growth', "Leverage Ratio": 'Leverage_Ratio',
+    "Return on Equity": 'Return_Equity', "Market Book Ratio": 'Market_Book_Ratio', "Operational Margin": 'Operational_Margin', "Sales Growth": 'Sales_Growth'})
 
-
+    return processed_df
