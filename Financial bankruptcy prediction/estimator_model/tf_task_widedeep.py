@@ -60,4 +60,4 @@ if __name__ == '__main__':
 
 
     # Run the training job
-    tf_estimator_factory.train_and_evaluate(output_dir)
+    tf_estimator_factory.train_and_evaluate_wide_deep(output_dir)
