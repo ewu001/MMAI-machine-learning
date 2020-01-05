@@ -24,8 +24,10 @@ def df_explore_helper(df):
     return df_summary
 
 
-def eval_train_generator(dataframe, target, split_number):
-    
+def eval_train_generator(dataframe, target, split_number, upper_bound=None):
+    # upper_bound by default is set to none, which means all data will be sampled
+    # this value can be configured to use for down sampling in imbalanced, skewed data
+
     true_record = dataframe[dataframe[target]==1]
     false_record = dataframe[dataframe[target]==0]
 
@@ -34,9 +36,13 @@ def eval_train_generator(dataframe, target, split_number):
 
     false_eval = false_record.iloc[0:split_number]
     true_eval = true_record.iloc[0:split_number]
-
-    false_train = false_record.iloc[split_number+1:]
-    true_train = true_record.iloc[split_number+1:]
+    
+    if upper_bound:
+        false_train = false_record.iloc[split_number+1:upper_bound]
+        true_train = true_record.iloc[split_number+1:upper_bound]
+    else:
+        false_train = false_record.iloc[split_number+1:]
+        true_train = true_record.iloc[split_number+1:]
 
     eval_dataset = pd.concat([true_eval, false_eval])
     eval_dataset = shuffle(eval_dataset)
