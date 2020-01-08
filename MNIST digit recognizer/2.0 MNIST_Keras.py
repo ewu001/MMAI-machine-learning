@@ -41,9 +41,6 @@ print(X_validation.shape)
 print(X_test.shape)
 
 
-#plot_data = X_train[0].reshape((28, 28))
-
-
 # Build your neural network structure
 if MODEL_MODE == "CNN":
     md = keras_model.CNNmodel()
@@ -67,10 +64,8 @@ md.compile(optimizer=OPTIMIZER, loss='categorical_crossentropy', metrics=['accur
 stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
 
 # Train model
-
 history = md.fit(x=X_train, y=y_train, batch_size=BATCH_SIZE, epochs=EPOCH, validation_data=(X_validation, y_validation), callbacks=[stopping])
 print("Finished training")
-
 
 
 # Output the loss and accuracy on the test set
