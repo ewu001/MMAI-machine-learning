@@ -11,7 +11,7 @@ EPOCH = 1
 
 # Test on MNIST data set
 # Import MNIST dataset from openml
-scikit_learn_data_path = './scikit_learn_data'
+scikit_learn_data_path = 'data/scikit_learn_data'
 dataset = fetch_openml('mnist_784', version=1, data_home=scikit_learn_data_path)
 
 # Data pre-process and normalization
