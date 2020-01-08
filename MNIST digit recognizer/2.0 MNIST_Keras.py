@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 import keras
 import tensorflow as tf
-import keras_model
+from model import keras_model
 
 # Configure the model mode
 # Available options: CNN, DNN
