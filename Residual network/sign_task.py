@@ -1,4 +1,4 @@
-import residual_model 
+from model import residual_model 
 import util as util
 
 import keras

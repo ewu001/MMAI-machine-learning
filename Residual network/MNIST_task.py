@@ -4,7 +4,7 @@ from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 
 
-import residual_model 
+from model import residual_model 
 
 BATCH_SIZE = 128
 EPOCH = 1
