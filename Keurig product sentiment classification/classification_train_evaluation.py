@@ -50,17 +50,13 @@ dnn_model.compile(optimizer='adam',
 
 #prints out summary of model
 dnn_model.summary()
+
 #saves the model weights
 filepath="weights/weights-simple.hdf5"
 checkpointer = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 history = dnn_model.fit([X_train], batch_size=64, y=to_categorical(y_train), verbose=1, validation_split=0.25, 
           shuffle=True, epochs=10, callbacks=[checkpointer])
 
-
-#plot model
-df = pd.DataFrame({'epochs':history.epoch, 'accuracy': history.history['acc'], 'validation_accuracy': history.history['val_acc']})
-g = sns.pointplot(x="epochs", y="accuracy", data=df, fit_reg=False)
-g = sns.pointplot(x="epochs", y="validation_accuracy", data=df, fit_reg=False, color='green')
 
 #get prediction accuarcy
 predicted = dnn_model.predict(X_test)
